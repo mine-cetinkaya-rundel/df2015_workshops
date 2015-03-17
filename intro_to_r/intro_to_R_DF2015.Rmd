@@ -108,7 +108,9 @@ Upper-left:
     
 - The **R script** containing all of the R code from this presentation can be fount at http://tinyurl.com/df15-introToR-code
 
-- Slides and all source files can be accessed via [https://stat.duke.edu/datafest/#workshops](https://stat.duke.edu/datafest/#workshops)
+- The slides for this presentation can be fount at http://tinyurl.com/df15-introToR-slides
+
+- Slides and all source files can be found at http://tinyurl.com/df15-introToR-source
 
 ## Loading a large .csv dataset Method 1
 ### By point-and-click
