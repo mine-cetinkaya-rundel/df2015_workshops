@@ -105,15 +105,19 @@ Upper-left:
 ## Getting this dataset / presentation
 
 - The `DFworkshop.csv` dataset used in this presentation is available at
+
 http://tinyurl.com/df15-introToR-data
     
 - The **R script** containing all of the R code from this presentation can be found at 
+
 http://tinyurl.com/df15-introToR-code
 
 - The slides for this presentation can be found at
+
 http://tinyurl.com/df15-introToR-slides
 
 - Slides and all source files can be found at
+
 http://tinyurl.com/df15-introToR-source
 
 ## Loading a large .csv dataset Method 1
