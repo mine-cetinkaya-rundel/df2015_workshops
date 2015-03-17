@@ -104,13 +104,12 @@ Upper-left:
 
 ## Getting this dataset / presentation
 
-- The `DFworkshop.csv` dataset used in this presentation is available at: http://tinyurl.com/DFwsData
+- The `DFworkshop.csv` dataset used in this presentation is available at: http://tinyurl.com/df15-introToR-data
     - [DOWNLOAD]
+    
+- The **R script** containing all of the R code from this presentation can be fount at http://tinyurl.com/df15-introToR-code
 
-- For later reference, this presentation is available at: http://tinyurl.com/DFwsPres
-
-- The **script** containing all the `R` commands is available at: http://tinyurl.com/DFwsScript
-
+- Slides and all source files can be accessed via https://stat.duke.edu/datafest/#workshops
 
 ## Loading a large .csv dataset Method 1
 ### By point-and-click
