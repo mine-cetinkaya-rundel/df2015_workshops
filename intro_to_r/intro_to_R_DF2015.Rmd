@@ -1,6 +1,6 @@
 ---
 title: "DataFest 2015 <br> Introduction to R and RStudio"
-author: "Gary Larson, Monika Hu, Mine Çetinkaya-Rundel"
+author: "Gary Larson and Monika Hu"
 date: "March 16, 2015"
 output:
   ioslides_presentation:
@@ -105,11 +105,10 @@ Upper-left:
 ## Getting this dataset / presentation
 
 - The `DFworkshop.csv` dataset used in this presentation is available at: http://tinyurl.com/df15-introToR-data
-    - [DOWNLOAD]
     
 - The **R script** containing all of the R code from this presentation can be fount at http://tinyurl.com/df15-introToR-code
 
-- Slides and all source files can be accessed via https://stat.duke.edu/datafest/#workshops
+- Slides and all source files can be accessed via [https://stat.duke.edu/datafest/#workshops](https://stat.duke.edu/datafest/#workshops)
 
 ## Loading a large .csv dataset Method 1
 ### By point-and-click
