@@ -53,7 +53,7 @@ install_github("hadley/lubridate")
 
 - Please download the following datasets that will be used in this presentation:
     - `billboard.csv`: http://tinyurl.com/df15-billboard
-    - `nyparking.csv`: http://tinyurl.com/df15-parking
+    - `nyparking.csv`: http://tinyurl.com/df15-nyparking
     - `weather.csv`: http://tinyurl.com/df15-weather
 
 <br/>
