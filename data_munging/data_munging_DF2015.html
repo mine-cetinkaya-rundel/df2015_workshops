@@ -317,8 +317,11 @@ park</pre>
 
 </article></slide><slide class=''><hgroup><h2>Fixing Dates</h2></hgroup><article  id="fixing-dates" class="smaller">
 
-<pre class = 'prettyprint lang-r'>library(lubridate)
-park$`Issue Date` = mdy(park$`Issue Date`)
+<pre class = 'prettyprint lang-r'>library(lubridate)</pre>
+
+<pre >## Loading required package: methods</pre>
+
+<pre class = 'prettyprint lang-r'>park$`Issue Date` = mdy(park$`Issue Date`)
 park</pre>
 
 <pre >## Source: local data frame [91,003 x 20]
@@ -627,16 +630,16 @@ transmute(month = month(`Issue Date`),
 <pre >## Source: local data frame [10 x 6]
 ## 
 ##    Plate ID Registration State Plate Type Issue Date Violation Code Vehicle Body Type
-## 1   GGH6786                 NY        PAS 2014-01-10             21              4DSD
-## 2   83448MB                 NY        COM 2013-10-15             42               VAN
-## 3  T500616C                 NY        OMT 2013-10-25             21              4DSD
-## 4    AG390M                 NJ        PAS 2014-05-19             14              DELV
-## 5   AMZ5617                 NY        PAS 2014-02-21             38              SUBN
-## 6   BKD2171                 NC        PAS 2013-08-21             37              SUBN
-## 7   0YA4182                 NJ        PAS 2014-06-11             13               BUS
-## 8    XABL59                 NJ        PAS 2014-06-02             38              DELV
-## 9   36820JA                 NY        COM 2013-12-30             69               VAN
-## 10  2AF6150                 99        PAS 2013-12-24             40               SDN</pre>
+## 1   DTR5895                 NY        PAS 2013-09-17             21              SUBN
+## 2    2TL97W                 NJ        PAS 2013-09-07             46               SDN
+## 3   CHX8847                 NY        PAS 2013-10-10             21              SUBN
+## 4    0AAPJ0                 CO        PAS 2013-11-25             37              4DSD
+## 5   61613JV                 NY        COM 2014-03-06             42               VAN
+## 6   DWT1878                 NY        PAS 2014-01-20             70              4DSD
+## 7   66292JV                 NY        COM 2014-03-25             48              DELV
+## 8   GKP6752                 NY        OMS 2014-02-09             46              4DSD
+## 9   31502MD                 NY        COM 2013-10-02             38               VAN
+## 10  HLC5994                 PA        PAS 2014-03-03             19               SDN</pre>
 
 </article></slide><slide class=''><hgroup><h2>sample_frac()</h2></hgroup><article  id="sample_frac" class="smaller">
 
@@ -645,15 +648,15 @@ transmute(month = month(`Issue Date`),
 <pre >## Source: local data frame [9 x 6]
 ## 
 ##   Plate ID Registration State Plate Type Issue Date Violation Code Vehicle Body Type
-## 1  EHM4084                 NY        PAS 2014-03-19             21              SUBN
-## 2  FZV6683                 NY        PAS 2013-09-30             20              SUBN
-## 3  GCU9692                 NY        PAS 2014-05-03              7              4DSD
-## 4   A90DBJ                 NJ        PAS 2013-12-01              7              4 DR
-## 5   194UPO                 CT        PAS 2013-08-02             21              4DSD
-## 6  FMC7325                 NY        PAS 2013-12-20             21              4DSD
-## 7  CMB6838                 NY        PAS 2013-12-31             21              4DSD
-## 8  79941MD                 NY        COM 2013-08-31             38               VAN
-## 9  FAD7887                 NY        PAS 2013-12-27             21              SUBN</pre>
+## 1   G994DJ                 NY        PAS 2014-01-17             14              SUBN
+## 2  EWX3039                 NY        PAS 2014-01-24             38              4DSD
+## 3   FC182F                 NY        PAS 2013-09-21             37              4DSD
+## 4  63955MC                 NY        COM 2013-11-25             14               VAN
+## 5  27541ME                 NY        COM 2014-03-17             35               VAN
+## 6  66623JZ                 NY        COM 2013-10-04             16               VAN
+## 7  GHL2174                 NY        PAS 2013-08-01             19              SUBN
+## 8  68432MB                 NY        COM 2013-08-01             16              PICK
+## 9  FCW2241                 NY        PAS 2013-12-23              7              4DSD</pre>
 
 </article></slide><slide class=''><hgroup><h2>summarise()</h2></hgroup><article  id="summarise" class="smaller">
 
