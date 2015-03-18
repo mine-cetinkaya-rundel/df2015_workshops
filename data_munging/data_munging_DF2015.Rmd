@@ -48,7 +48,7 @@ install_github("hadley/tidyr")
 install_github("hadley/dplyr")
 ```
 
-## Getting this dataset / presentation
+## Datasets, presentation, source code
 
 - Please download the following datasets that will be used in this presentation:
     - `billboard.csv`: http://tinyurl.com/df15-billboard
