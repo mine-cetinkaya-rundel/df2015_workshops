@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DataFest 2015  Data Munging with R and dplyr</title>
+  <title>dataFest 2015  Data Munging with R and dplyr</title>
 
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -26,7 +26,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'DataFest 2015 <br/> Data Munging with R and dplyr',
+                title: 'dataFest 2015 <br/> Data Munging with R and dplyr',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -103,7 +103,7 @@
 
 <p>To do this we need to install Hadley&#39;s devtools package from CRAN so that we can easily grab the others from github.</p>
 
-<pre class = 'prettyprint lang-r'>install.packages(&quot;devtools&quot;) 
+<pre class = 'prettyprint lang-r'>install.packages(&quot;devtools&quot;)
 library(devtools)</pre>
 
 </article></slide><slide class=''><hgroup><h2>Installing from Github</h2></hgroup><article  id="installing-from-github">
@@ -120,7 +120,8 @@ library(devtools)</pre>
 
 <pre class = 'prettyprint lang-r'>install_github(&quot;hadley/readr&quot;)
 install_github(&quot;hadley/tidyr&quot;)
-install_github(&quot;hadley/dplyr&quot;)</pre>
+install_github(&quot;hadley/dplyr&quot;)
+install_github(&quot;hadley/lubridate&quot;)</pre>
 
 </article></slide><slide class=''><hgroup><h2>Datasets, presentation, source code</h2></hgroup><article  id="datasets-presentation-source-code">
 
@@ -129,19 +130,25 @@ install_github(&quot;hadley/dplyr&quot;)</pre>
 
 <ul>
 <li><code>billboard.csv</code>: <a href='http://tinyurl.com/df15-billboard' title=''>http://tinyurl.com/df15-billboard</a></li>
-<li><code>NYParkingViolations_small.csv</code>: <a href='http://tinyurl.com/df15-parking' title=''>http://tinyurl.com/df15-parking</a></li>
+<li><code>nyparking.csv</code>: <a href='http://tinyurl.com/df15-parking' title=''>http://tinyurl.com/df15-parking</a></li>
 <li><code>weather.csv</code>: <a href='http://tinyurl.com/df15-weather' title=''>http://tinyurl.com/df15-weather</a></li>
 </ul></li>
-<li>The slides for this presentation can be found at</li>
 </ul>
 
-<p><a href='http://tinyurl.com/df15-dataMunging-slides' title=''>http://tinyurl.com/df15-dataMunging-slides</a></p>
+<p><br/></p>
 
 <ul>
-<li>Slides and all source files can be found at</li>
-</ul>
+<li><p>The slides for this presentation can be found at</p>
 
-<p><a href='http://tinyurl.com/df15-dataMunging-source' title=''>http://tinyurl.com/df15-dataMunging-source</a></p>
+<ul>
+<li><a href='http://tinyurl.com/df15-dataMunging-slides' title=''>http://tinyurl.com/df15-dataMunging-slides</a></li>
+</ul></li>
+<li><p>Slides and all source files can be found at</p>
+
+<ul>
+<li><a href='http://tinyurl.com/df15-dataMunging-source' title=''>http://tinyurl.com/df15-dataMunging-source</a></li>
+</ul></li>
+</ul>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>readr</h2></hgroup><article  id="readr">
 
@@ -170,23 +177,23 @@ weather</pre>
 
 <pre >## Source: local data frame [22 x 35]
 ## 
-##         id year month element d1   d2   d3 d4   d5 d6 d7 d8 d9  d10  d11 d12 d13 d14 d15
-## 1  MX17004 2010     1    tmax NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## 2  MX17004 2010     1    tmin NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## 3  MX17004 2010     2    tmax NA 27.3 24.1 NA   NA NA NA NA NA   NA 29.7  NA  NA  NA  NA
-## 4  MX17004 2010     2    tmin NA 14.4 14.4 NA   NA NA NA NA NA   NA 13.4  NA  NA  NA  NA
-## 5  MX17004 2010     3    tmax NA   NA   NA NA 32.1 NA NA NA NA 34.5   NA  NA  NA  NA  NA
-## 6  MX17004 2010     3    tmin NA   NA   NA NA 14.2 NA NA NA NA 16.8   NA  NA  NA  NA  NA
-## 7  MX17004 2010     4    tmax NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## 8  MX17004 2010     4    tmin NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## 9  MX17004 2010     5    tmax NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## 10 MX17004 2010     5    tmin NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## ..     ...  ...   ...     ... ..  ...  ... ..  ... .. .. .. ..  ...  ... ... ... ... ...
-## Variables not shown: d16 (dbl), d17 (dbl), d18 (lgl), d19 (lgl), d20 (lgl), d21 (lgl),
-##   d22 (lgl), d23 (dbl), d24 (lgl), d25 (dbl), d26 (dbl), d27 (dbl), d28 (dbl), d29 (dbl),
-##   d30 (dbl), d31 (dbl)</pre>
+##         id year month element d 1  d 2  d 3 d 4  d 5 d 6 d 7 d 8 d 9 d 10 d 11 d 12 d 13
+## 1  MX17004 2010     1    tmax  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## 2  MX17004 2010     1    tmin  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## 3  MX17004 2010     2    tmax  NA 27.3 24.1  NA   NA  NA  NA  NA  NA   NA 29.7   NA   NA
+## 4  MX17004 2010     2    tmin  NA 14.4 14.4  NA   NA  NA  NA  NA  NA   NA 13.4   NA   NA
+## 5  MX17004 2010     3    tmax  NA   NA   NA  NA 32.1  NA  NA  NA  NA 34.5   NA   NA   NA
+## 6  MX17004 2010     3    tmin  NA   NA   NA  NA 14.2  NA  NA  NA  NA 16.8   NA   NA   NA
+## 7  MX17004 2010     4    tmax  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## 8  MX17004 2010     4    tmin  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## 9  MX17004 2010     5    tmax  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## 10 MX17004 2010     5    tmin  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## ..     ...  ...   ...     ... ...  ...  ... ...  ... ... ... ... ...  ...  ...  ...  ...
+## Variables not shown: d 14 (dbl), d 15 (dbl), d 16 (dbl), d 17 (dbl), d 18 (lgl), d 19
+##   (lgl), d 20 (lgl), d 21 (lgl), d 22 (lgl), d 23 (dbl), d 24 (lgl), d 25 (dbl), d 26
+##   (dbl), d 27 (dbl), d 28 (dbl), d 29 (dbl), d 30 (dbl), d 31 (dbl)</pre>
 
-</article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section">
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section" class="smaller">
 
 <pre class = 'prettyprint lang-r'>str(weather)</pre>
 
@@ -195,37 +202,37 @@ weather</pre>
 ##  $ year   : int  2010 2010 2010 2010 2010 2010 2010 2010 2010 2010 ...
 ##  $ month  : int  1 1 2 2 3 3 4 4 5 5 ...
 ##  $ element: chr  &quot;tmax&quot; &quot;tmin&quot; &quot;tmax&quot; &quot;tmin&quot; ...
-##  $ d1     : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d2     : num  NA NA 27.3 14.4 NA NA NA NA NA NA ...
-##  $ d3     : num  NA NA 24.1 14.4 NA NA NA NA NA NA ...
-##  $ d4     : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d5     : num  NA NA NA NA 32.1 14.2 NA NA NA NA ...
-##  $ d6     : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d7     : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d8     : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d9     : logi  NA NA NA NA NA NA ...
-##  $ d10    : num  NA NA NA NA 34.5 16.8 NA NA NA NA ...
-##  $ d11    : num  NA NA 29.7 13.4 NA NA NA NA NA NA ...
-##  $ d12    : logi  NA NA NA NA NA NA ...
-##  $ d13    : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d14    : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d15    : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d16    : num  NA NA NA NA 31.1 17.6 NA NA NA NA ...
-##  $ d17    : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d18    : logi  NA NA NA NA NA NA ...
-##  $ d19    : logi  NA NA NA NA NA NA ...
-##  $ d20    : logi  NA NA NA NA NA NA ...
-##  $ d21    : logi  NA NA NA NA NA NA ...
-##  $ d22    : logi  NA NA NA NA NA NA ...
-##  $ d23    : num  NA NA 29.9 10.7 NA NA NA NA NA NA ...
-##  $ d24    : logi  NA NA NA NA NA NA ...
-##  $ d25    : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d26    : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d27    : num  NA NA NA NA NA NA 36.3 16.7 33.2 18.2 ...
-##  $ d28    : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d29    : num  NA NA NA NA NA NA NA NA NA NA ...
-##  $ d30    : num  27.8 14.5 NA NA NA NA NA NA NA NA ...
-##  $ d31    : num  NA NA NA NA NA NA NA NA NA NA ...</pre>
+##  $ d 1    : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 2    : num  NA NA 27.3 14.4 NA NA NA NA NA NA ...
+##  $ d 3    : num  NA NA 24.1 14.4 NA NA NA NA NA NA ...
+##  $ d 4    : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 5    : num  NA NA NA NA 32.1 14.2 NA NA NA NA ...
+##  $ d 6    : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 7    : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 8    : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 9    : logi  NA NA NA NA NA NA ...
+##  $ d 10   : num  NA NA NA NA 34.5 16.8 NA NA NA NA ...
+##  $ d 11   : num  NA NA 29.7 13.4 NA NA NA NA NA NA ...
+##  $ d 12   : logi  NA NA NA NA NA NA ...
+##  $ d 13   : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 14   : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 15   : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 16   : num  NA NA NA NA 31.1 17.6 NA NA NA NA ...
+##  $ d 17   : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 18   : logi  NA NA NA NA NA NA ...
+##  $ d 19   : logi  NA NA NA NA NA NA ...
+##  $ d 20   : logi  NA NA NA NA NA NA ...
+##  $ d 21   : logi  NA NA NA NA NA NA ...
+##  $ d 22   : logi  NA NA NA NA NA NA ...
+##  $ d 23   : num  NA NA 29.9 10.7 NA NA NA NA NA NA ...
+##  $ d 24   : logi  NA NA NA NA NA NA ...
+##  $ d 25   : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 26   : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 27   : num  NA NA NA NA NA NA 36.3 16.7 33.2 18.2 ...
+##  $ d 28   : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 29   : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ d 30   : num  27.8 14.5 NA NA NA NA NA NA NA NA ...
+##  $ d 31   : num  NA NA NA NA NA NA NA NA NA NA ...</pre>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>dplyr</h2></hgroup><article  id="dplyr">
 
@@ -292,7 +299,7 @@ weather</pre>
 <pre class = 'prettyprint lang-r'>library(dplyr)
 library(readr)
 
-park = read_csv(&quot;NYParkingViolations_small.csv&quot;)
+park = read_csv(&quot;nyparking.csv&quot;)
 park</pre>
 
 <pre >## Source: local data frame [91,003 x 20]
@@ -555,8 +562,8 @@ park</pre>
 
 </article></slide><slide class=''><hgroup><h2>mutate()</h2></hgroup><article  id="mutate" class="smaller">
 
-<pre class = 'prettyprint lang-r'>park %&gt;% select(2:5) %&gt;% 
-mutate(month = month(`Issue Date`), 
+<pre class = 'prettyprint lang-r'>park %&gt;% select(2:5) %&gt;%
+mutate(month = month(`Issue Date`),
        day = day(`Issue Date`),
        year = year(`Issue Date`),
        wday = wday(`Issue Date`, label=TRUE))</pre>
@@ -578,8 +585,8 @@ mutate(month = month(`Issue Date`),
 
 </article></slide><slide class=''><hgroup><h2>transmute()</h2></hgroup><article  id="transmute" class="smaller">
 
-<pre class = 'prettyprint lang-r'>park %&gt;% 
-transmute(month = month(`Issue Date`), 
+<pre class = 'prettyprint lang-r'>park %&gt;%
+transmute(month = month(`Issue Date`),
           day = day(`Issue Date`),
           year = year(`Issue Date`),
           wday = wday(`Issue Date`, label=TRUE))</pre>
@@ -630,16 +637,16 @@ transmute(month = month(`Issue Date`),
 <pre >## Source: local data frame [10 x 6]
 ## 
 ##    Plate ID Registration State Plate Type Issue Date Violation Code Vehicle Body Type
-## 1   DTR5895                 NY        PAS 2013-09-17             21              SUBN
-## 2    2TL97W                 NJ        PAS 2013-09-07             46               SDN
-## 3   CHX8847                 NY        PAS 2013-10-10             21              SUBN
-## 4    0AAPJ0                 CO        PAS 2013-11-25             37              4DSD
-## 5   61613JV                 NY        COM 2014-03-06             42               VAN
-## 6   DWT1878                 NY        PAS 2014-01-20             70              4DSD
-## 7   66292JV                 NY        COM 2014-03-25             48              DELV
-## 8   GKP6752                 NY        OMS 2014-02-09             46              4DSD
-## 9   31502MD                 NY        COM 2013-10-02             38               VAN
-## 10  HLC5994                 PA        PAS 2014-03-03             19               SDN</pre>
+## 1   2144708                 IN        PAS 2013-11-26             61              TRAC
+## 2   GLC5558                 NY        PAS 2014-06-13             37              SUBN
+## 3   65927JE                 NY        COM 2013-12-31             19              UTIL
+## 4   CJM7764                 NY        PAS 2014-01-07             16              PICK
+## 5    K58DVY                 NJ        PAS 2014-02-04             20              4DSD
+## 6   FZC5946                 NY        PAS 2014-02-12             20              4DSD
+## 7   K10443K                 PA        PAS 2013-12-09             37              SUBN
+## 8   EHG7760                 NY        PAS 2013-11-14             21               SDN
+## 9   13070PA                 NY        IRP 2013-10-31             47              FLAT
+## 10  DFX3412                 NY        PAS 2013-08-26             21              SUBN</pre>
 
 </article></slide><slide class=''><hgroup><h2>sample_frac()</h2></hgroup><article  id="sample_frac" class="smaller">
 
@@ -648,15 +655,15 @@ transmute(month = month(`Issue Date`),
 <pre >## Source: local data frame [9 x 6]
 ## 
 ##   Plate ID Registration State Plate Type Issue Date Violation Code Vehicle Body Type
-## 1   G994DJ                 NY        PAS 2014-01-17             14              SUBN
-## 2  EWX3039                 NY        PAS 2014-01-24             38              4DSD
-## 3   FC182F                 NY        PAS 2013-09-21             37              4DSD
-## 4  63955MC                 NY        COM 2013-11-25             14               VAN
-## 5  27541ME                 NY        COM 2014-03-17             35               VAN
-## 6  66623JZ                 NY        COM 2013-10-04             16               VAN
-## 7  GHL2174                 NY        PAS 2013-08-01             19              SUBN
-## 8  68432MB                 NY        COM 2013-08-01             16              PICK
-## 9  FCW2241                 NY        PAS 2013-12-23              7              4DSD</pre>
+## 1  GCA7233                 PA        PAS 2013-12-18             38              SUBN
+## 2  FHD2505                 NY        PAS 2014-06-25             40              4DSD
+## 3   J82DHZ                 NJ        PAS 2014-03-07             21              4DSD
+## 4  FSV4242                 NY        PAS 2013-10-15             38              SUBN
+## 5  GGU7474                 NY        PAS 2014-03-21              7              SUBN
+## 6  GJX6480                 NY        PAS 2014-04-08              7              4DSD
+## 7   DH804T                 NY        PAS 2014-02-09              7                  
+## 8  T438409                 TN        PAS 2014-05-23             19              TRLR
+## 9    40826                 NY        MED 2014-04-09             38              4DSD</pre>
 
 </article></slide><slide class=''><hgroup><h2>summarise()</h2></hgroup><article  id="summarise" class="smaller">
 
@@ -689,7 +696,7 @@ transmute(month = month(`Issue Date`),
 
 </article></slide><slide class=''><hgroup><h2>summarise() &amp; group_by()</h2></hgroup><article  id="summarise-group_by" class="smaller">
 
-<pre class = 'prettyprint lang-r'>park %&gt;% select(1:6) %&gt;% 
+<pre class = 'prettyprint lang-r'>park %&gt;% select(1:6) %&gt;%
 group_by(`Registration State`) %&gt;%
 summarize(n(), min(`Issue Date`), max(`Issue Date`))</pre>
 
@@ -710,7 +717,7 @@ summarize(n(), min(`Issue Date`), max(`Issue Date`))</pre>
 
 </article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section-5" class="smaller">
 
-<pre class = 'prettyprint lang-r'>park %&gt;% select(1:6) %&gt;% 
+<pre class = 'prettyprint lang-r'>park %&gt;% select(1:6) %&gt;%
 filter(`Plate Type` != 999) %&gt;%
 group_by(`Plate Type`, `Violation Code`) %&gt;%
 summarize(n = n(), n_states = n_distinct(`Registration State`))</pre>
@@ -805,22 +812,22 @@ plot(days,type=&#39;l&#39;)</pre>
 
 <div class="columns-2">
 <pre class = 'prettyprint lang-r'>addr = data.frame(name = c(&quot;Alice&quot;,&quot;Bob&quot;,
-                           &quot;Carol&quot;,&quot;Dave&quot;,
+                           &quot;Carol&quot;,&quot;dave&quot;,
                            &quot;Eve&quot;),
                   email= c(&quot;alice@company.com&quot;,
-                           &quot;bob@company.com&quot;, 
-                           &quot;carol@company.com&quot;, 
-                           &quot;dave@company.com&quot;, 
+                           &quot;bob@company.com&quot;,
+                           &quot;carol@company.com&quot;,
+                           &quot;dave@company.com&quot;,
                            &quot;eve@company.com&quot;),
                   stringsAsFactors = FALSE)</pre>
 
 <pre class = 'prettyprint lang-r'>phone = data.frame(name = c(&quot;Bob&quot;,&quot;Carol&quot;,
                             &quot;Eve&quot;,&quot;Eve&quot;,
                             &quot;Frank&quot;),
-                   phone= c(&quot;919 555-1111&quot;, 
-                            &quot;919 555-2222&quot;, 
-                            &quot;919 555-3333&quot;, 
-                            &quot;310 555-3333&quot;, 
+                   phone= c(&quot;919 555-1111&quot;,
+                            &quot;919 555-2222&quot;,
+                            &quot;919 555-3333&quot;,
+                            &quot;310 555-3333&quot;,
                             &quot;919 555-4444&quot;),
                    stringsAsFactors = FALSE)</pre></div>
 
@@ -831,7 +838,7 @@ plot(days,type=&#39;l&#39;)</pre>
 ## 1 Alice alice@company.com
 ## 2   Bob   bob@company.com
 ## 3 Carol carol@company.com
-## 4  Dave  dave@company.com
+## 4  dave  dave@company.com
 ## 5   Eve   eve@company.com</pre>
 
 <pre class = 'prettyprint lang-r'>phone</pre>
@@ -856,7 +863,7 @@ plot(days,type=&#39;l&#39;)</pre>
 ## 1 Alice alice@company.com         &lt;NA&gt;
 ## 2   Bob   bob@company.com 919 555-1111
 ## 3 Carol carol@company.com 919 555-2222
-## 4  Dave  dave@company.com         &lt;NA&gt;
+## 4  dave  dave@company.com         &lt;NA&gt;
 ## 5   Eve   eve@company.com 919 555-3333
 ## 6   Eve   eve@company.com 310 555-3333
 ## 7 Frank              &lt;NA&gt; 919 555-4444</pre>
@@ -869,7 +876,7 @@ plot(days,type=&#39;l&#39;)</pre>
 ## 1 Alice alice@company.com         &lt;NA&gt;
 ## 2   Bob   bob@company.com 919 555-1111
 ## 3 Carol carol@company.com 919 555-2222
-## 4  Dave  dave@company.com         &lt;NA&gt;
+## 4  dave  dave@company.com         &lt;NA&gt;
 ## 5   Eve   eve@company.com 919 555-3333
 ## 6   Eve   eve@company.com 310 555-3333
 ## 7 Frank              &lt;NA&gt; 919 555-4444</pre>
@@ -916,7 +923,7 @@ plot(days,type=&#39;l&#39;)</pre>
 ## 1 Alice alice@company.com         &lt;NA&gt;
 ## 2   Bob   bob@company.com 919 555-1111
 ## 3 Carol carol@company.com 919 555-2222
-## 4  Dave  dave@company.com         &lt;NA&gt;
+## 4  dave  dave@company.com         &lt;NA&gt;
 ## 5   Eve   eve@company.com 919 555-3333
 ## 6   Eve   eve@company.com 310 555-3333</pre>
 
@@ -928,7 +935,7 @@ plot(days,type=&#39;l&#39;)</pre>
 ## 1 Alice alice@company.com         &lt;NA&gt;
 ## 2   Bob   bob@company.com 919 555-1111
 ## 3 Carol carol@company.com 919 555-2222
-## 4  Dave  dave@company.com         &lt;NA&gt;
+## 4  dave  dave@company.com         &lt;NA&gt;
 ## 5   Eve   eve@company.com 919 555-3333
 ## 6   Eve   eve@company.com 310 555-3333</pre>
 
@@ -980,7 +987,7 @@ plot(days,type=&#39;l&#39;)</pre>
 <pre >## Joining by: &quot;name&quot;</pre>
 
 <pre >##    name             email
-## 1  Dave  dave@company.com
+## 1  dave  dave@company.com
 ## 2 Alice alice@company.com</pre></div>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>tidyr</h2></hgroup><article  id="tidyr">
@@ -1008,39 +1015,39 @@ w</pre>
 
 <pre >## Source: local data frame [22 x 35]
 ## 
-##         id year month element d1   d2   d3 d4   d5 d6 d7 d8 d9  d10  d11 d12 d13 d14 d15
-## 1  MX17004 2010     1    tmax NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## 2  MX17004 2010     1    tmin NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## 3  MX17004 2010     2    tmax NA 27.3 24.1 NA   NA NA NA NA NA   NA 29.7  NA  NA  NA  NA
-## 4  MX17004 2010     2    tmin NA 14.4 14.4 NA   NA NA NA NA NA   NA 13.4  NA  NA  NA  NA
-## 5  MX17004 2010     3    tmax NA   NA   NA NA 32.1 NA NA NA NA 34.5   NA  NA  NA  NA  NA
-## 6  MX17004 2010     3    tmin NA   NA   NA NA 14.2 NA NA NA NA 16.8   NA  NA  NA  NA  NA
-## 7  MX17004 2010     4    tmax NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## 8  MX17004 2010     4    tmin NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## 9  MX17004 2010     5    tmax NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## 10 MX17004 2010     5    tmin NA   NA   NA NA   NA NA NA NA NA   NA   NA  NA  NA  NA  NA
-## ..     ...  ...   ...     ... ..  ...  ... ..  ... .. .. .. ..  ...  ... ... ... ... ...
-## Variables not shown: d16 (dbl), d17 (dbl), d18 (lgl), d19 (lgl), d20 (lgl), d21 (lgl),
-##   d22 (lgl), d23 (dbl), d24 (lgl), d25 (dbl), d26 (dbl), d27 (dbl), d28 (dbl), d29 (dbl),
-##   d30 (dbl), d31 (dbl)</pre>
+##         id year month element d 1  d 2  d 3 d 4  d 5 d 6 d 7 d 8 d 9 d 10 d 11 d 12 d 13
+## 1  MX17004 2010     1    tmax  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## 2  MX17004 2010     1    tmin  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## 3  MX17004 2010     2    tmax  NA 27.3 24.1  NA   NA  NA  NA  NA  NA   NA 29.7   NA   NA
+## 4  MX17004 2010     2    tmin  NA 14.4 14.4  NA   NA  NA  NA  NA  NA   NA 13.4   NA   NA
+## 5  MX17004 2010     3    tmax  NA   NA   NA  NA 32.1  NA  NA  NA  NA 34.5   NA   NA   NA
+## 6  MX17004 2010     3    tmin  NA   NA   NA  NA 14.2  NA  NA  NA  NA 16.8   NA   NA   NA
+## 7  MX17004 2010     4    tmax  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## 8  MX17004 2010     4    tmin  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## 9  MX17004 2010     5    tmax  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## 10 MX17004 2010     5    tmin  NA   NA   NA  NA   NA  NA  NA  NA  NA   NA   NA   NA   NA
+## ..     ...  ...   ...     ... ...  ...  ... ...  ... ... ... ... ...  ...  ...  ...  ...
+## Variables not shown: d 14 (dbl), d 15 (dbl), d 16 (dbl), d 17 (dbl), d 18 (lgl), d 19
+##   (lgl), d 20 (lgl), d 21 (lgl), d 22 (lgl), d 23 (dbl), d 24 (lgl), d 25 (dbl), d 26
+##   (dbl), d 27 (dbl), d 28 (dbl), d 29 (dbl), d 30 (dbl), d 31 (dbl)</pre>
 
 </article></slide><slide class=''><hgroup><h2>From Wide to Long</h2></hgroup><article  id="from-wide-to-long">
 
-<pre class = 'prettyprint lang-r'>w %&gt;% gather(day, value, d1:d31, na.rm = TRUE)</pre>
+<pre class = 'prettyprint lang-r'>w %&gt;% gather(day, value, `d 1`:`d 31`, na.rm = TRUE)</pre>
 
 <pre >## Source: local data frame [66 x 6]
 ## 
 ##         id year month element day value
-## 1  MX17004 2010    12    tmax  d1  29.9
-## 2  MX17004 2010    12    tmin  d1  13.8
-## 3  MX17004 2010     2    tmax  d2  27.3
-## 4  MX17004 2010     2    tmin  d2  14.4
-## 5  MX17004 2010    11    tmax  d2  31.3
-## 6  MX17004 2010    11    tmin  d2  16.3
-## 7  MX17004 2010     2    tmax  d3  24.1
-## 8  MX17004 2010     2    tmin  d3  14.4
-## 9  MX17004 2010     7    tmax  d3  28.6
-## 10 MX17004 2010     7    tmin  d3  17.5
+## 1  MX17004 2010    12    tmax d 1  29.9
+## 2  MX17004 2010    12    tmin d 1  13.8
+## 3  MX17004 2010     2    tmax d 2  27.3
+## 4  MX17004 2010     2    tmin d 2  14.4
+## 5  MX17004 2010    11    tmax d 2  31.3
+## 6  MX17004 2010    11    tmin d 2  16.3
+## 7  MX17004 2010     2    tmax d 3  24.1
+## 8  MX17004 2010     2    tmin d 3  14.4
+## 9  MX17004 2010     7    tmax d 3  28.6
+## 10 MX17004 2010     7    tmin d 3  17.5
 ## ..     ...  ...   ...     ... ...   ...</pre>
 
 </article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section-9">
@@ -1050,21 +1057,21 @@ w</pre>
 <pre >## Source: local data frame [66 x 6]
 ## 
 ##         id year month element day value
-## 1  MX17004 2010    12    tmax  d1  29.9
-## 2  MX17004 2010    12    tmin  d1  13.8
-## 3  MX17004 2010     2    tmax  d2  27.3
-## 4  MX17004 2010     2    tmin  d2  14.4
-## 5  MX17004 2010    11    tmax  d2  31.3
-## 6  MX17004 2010    11    tmin  d2  16.3
-## 7  MX17004 2010     2    tmax  d3  24.1
-## 8  MX17004 2010     2    tmin  d3  14.4
-## 9  MX17004 2010     7    tmax  d3  28.6
-## 10 MX17004 2010     7    tmin  d3  17.5
+## 1  MX17004 2010    12    tmax d 1  29.9
+## 2  MX17004 2010    12    tmin d 1  13.8
+## 3  MX17004 2010     2    tmax d 2  27.3
+## 4  MX17004 2010     2    tmin d 2  14.4
+## 5  MX17004 2010    11    tmax d 2  31.3
+## 6  MX17004 2010    11    tmin d 2  16.3
+## 7  MX17004 2010     2    tmax d 3  24.1
+## 8  MX17004 2010     2    tmin d 3  14.4
+## 9  MX17004 2010     7    tmax d 3  28.6
+## 10 MX17004 2010     7    tmin d 3  17.5
 ## ..     ...  ...   ...     ... ...   ...</pre>
 
 </article></slide><slide class=''><hgroup><h2>Data cleaning</h2></hgroup><article  id="data-cleaning" class="smaller">
 
-<pre class = 'prettyprint lang-r'>w %&gt;% 
+<pre class = 'prettyprint lang-r'>w %&gt;%
 gather(day, value, -(id:element), na.rm = TRUE) %&gt;%
 mutate(date = as.Date(paste(year, month, extract_numeric(day), sep=&quot;-&quot;))) %&gt;%
 select(id, date, element, value) %&gt;%
@@ -1087,7 +1094,7 @@ arrange(id, date, desc(element))</pre>
 
 </article></slide><slide class=''><hgroup><h2>Finishing up</h2></hgroup><article  id="finishing-up" class="smaller">
 
-<pre class = 'prettyprint lang-r'>w %&gt;% 
+<pre class = 'prettyprint lang-r'>w %&gt;%
 gather(day, value, -(id:element), na.rm = TRUE) %&gt;%
 mutate(date = as.Date(paste(year, month, extract_numeric(day), sep=&quot;-&quot;))) %&gt;%
 select(id, date, element, value) %&gt;%
