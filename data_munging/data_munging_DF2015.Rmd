@@ -19,7 +19,7 @@ suppressMessages(library(tidyr))
 
 # Set up
 
-## Welcome to the hadleyverse
+## Welcome to the Hadleyverse
 
 For today's session we will be using a number of R packages that have been developed by Hadley Wickham.
 
@@ -275,13 +275,13 @@ park %>% distinct()
 ## sample_n() {.smaller}
 
 ```{r}
-select(park, 1:6) %>% sample_n(10)
+park %>% select(1:6) %>% sample_n(10)
 ```
 
 ## sample_frac() {.smaller}
 
 ```{r}
-select(park, 1:6) %>% sample_frac(0.0001)
+park %>% select(1:6) %>% sample_frac(0.0001)
 ```
 
 ## summarise() {.smaller}
@@ -293,13 +293,13 @@ park %>% summarize(n(), min(`Issue Date`), max(`Issue Date`))
 ## group_by() {.smaller}
 
 ```{r}
-group_by(select(park, 1:6), `Registration State`)
+group_by(park %>% select(1:6), `Registration State`)
 ```
 
 ## summarise() & group_by() {.smaller}
 
 ```{r}
-select(park, 1:6) %>% 
+park %>% select(1:6) %>% 
 group_by(`Registration State`) %>%
 summarize(n(), min(`Issue Date`), max(`Issue Date`))
 ```
@@ -307,22 +307,51 @@ summarize(n(), min(`Issue Date`), max(`Issue Date`))
 ## {.smaller}
 
 ```{r}
-select(park, 1:6) %>% 
+park %>% select(1:6) %>% 
 filter(`Plate Type` != 999) %>%
 group_by(`Plate Type`, `Violation Code`) %>%
 summarize(n = n(), n_states = n_distinct(`Registration State`))
 ```
 
+## Putting it all together
+
+Lets see if we can find out something about the distribution tickets through time.
+
+```{r}
+days = park %>% select(`Issue Date`) %>% group_by(`Issue Date`) %>% summarize(n = n())
+days
+```
+
+##
+
+```{r}
+plot(days,type='l')
+```
+
+##
+
+```{r}
+days = days %>% filter(`Issue Date` > "2013/09/01", `Issue Date` < "2014/6/30")
+plot(days,type='l')
+```
+
+##
+
+```{r}
+plot(days %>% filter(`Issue Date` > "2013/12/22", `Issue Date` < "2014/1/5"),type='l')
+```
+
+
 ## Exercise {.smaller}
 
-Using the Parking Violation dataset, try to create the following data frame:
+Using the Parking Violation dataset,
 
 * Construct a data frame containing Registration State and a issue date and time combined into a single DateTime column (try `paste` and `ymd_hm` from lubridate). 
-    * Subset these data to include only datetimes between 12/22/2013 and 1/5/2014 and construct a plot of the timeseries of the frequency of violations over this two week period by state.
-    * Use these data to answer the questions:
-        * What day of the week are you most likely to get a ticket?
-        * What hour of the day are you most likely to get a ticket?
-        * What hour and day of the week are you most likely to get a ticket?
+* Subset these data to include only datetimes between 09/01/2013 and 6/30/2014.
+* Use these data to answer the following questions for both instate (NY registered cars) and out of state (non-NY registered cars):
+    * What day of the week are you most likely to get a ticket?
+    * What hour of the day are you most likely to get a ticket?
+    * What hour and day of the week are you most likely to get a ticket?
 
 
 ## A Grammar of Data Manipulation (cont.)
@@ -504,6 +533,15 @@ arrange(id, date, desc(element)) %>%
 spread(element, value)
 ```
 
+## Exercise
+
+We've also provided a data set from the billboard music charts (`billboard.csv`), using what we've covered so far try to tidy this data into a more useful and usable structure.
+
+```{r}
+bb = read_csv("billboard.csv")
+```
+
+
 
 # Acknowledgments
 
@@ -511,7 +549,7 @@ spread(element, value)
 
 Above materials are derived in part from the following sources:
 
-* [RStudio Data Wrangling Cheat Sheet](file:///Users/rundel/Downloads/data-wrangling-cheatsheet.pdf)
+* [RStudio Data Wrangling Cheat Sheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
 * Package Vigenettes - [dplyr](http://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html), [tidyr](http://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)
 
