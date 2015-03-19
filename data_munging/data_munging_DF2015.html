@@ -275,7 +275,7 @@ weather</pre>
 
 <p>Piped:</p>
 
-<pre class = 'prettyprint lang-r'>h(x) %&gt;% g(z=1) %&gt;% g(y=1)</pre>
+<pre class = 'prettyprint lang-r'>h(x) %&gt;% g(z=1) %&gt;% f(y=1)</pre>
 
 </article></slide><slide class=''><hgroup><h2>Pipes</h2></hgroup><article  id="pipes-1">
 
@@ -637,16 +637,16 @@ transmute(month = month(`Issue Date`),
 <pre >## Source: local data frame [10 x 6]
 ## 
 ##    Plate ID Registration State Plate Type Issue Date Violation Code Vehicle Body Type
-## 1   AZG739O                 NY        SRF 2013-07-30             21              4DSD
-## 2     HUANG                 NY        RGL 2013-12-26             38              4DSD
-## 3   CAV8344                 NC        PAS 2014-05-17             40              4DSD
-## 4   57029JZ                 NY        COM 2014-02-04             46              DELV
-## 5   20732PC                 NY        IRP 2014-03-13             19              DELV
-## 6    AN790L                 NJ        PAS 2013-10-22             14              TRAC
-## 7   GEK2525                 NY        OMS 2013-07-30             37              4DSD
-## 8   DMJ8895                 NY        PAS 2014-01-30             21              SUBN
-## 9   CTD5665                 NY        PAS 2014-02-11             38              SUBN
-## 10  EHM9743                 NY        PAS 2014-01-18             14              4DSD</pre>
+## 1   FRR3918                 NY        PAS 2013-11-08             71              4DSD
+## 2    P88DUN                 NJ        PAS 2014-05-07             20               SDN
+## 3   DUB4773                 NY        OMS 2014-04-10             38              4DSD
+## 4   FMS8984                 NY        PAS 2013-11-01             70              4DSD
+## 5   DZC8237                 NY        PAS 2013-08-20             21              4DSD
+## 6   FTB9860                 NC        PAS 2013-09-17             14              4DSD
+## 7   GBU4681                 NY        PAS 2014-05-02              7              SUBN
+## 8   GKJ3356                 NY        PAS 2014-06-10             21              4DSD
+## 9   FYB1342                 NY        PAS 2013-09-04             21              SUBN
+## 10  GLC3371                 NY        PAS 2013-11-09              7                SW</pre>
 
 </article></slide><slide class=''><hgroup><h2>sample_frac()</h2></hgroup><article  id="sample_frac" class="smaller">
 
@@ -655,15 +655,15 @@ transmute(month = month(`Issue Date`),
 <pre >## Source: local data frame [9 x 6]
 ## 
 ##   Plate ID Registration State Plate Type Issue Date Violation Code Vehicle Body Type
-## 1  0L10BMC                 NJ        PAS 2014-04-22             31              SUBN
-## 2  FZX9101                 NY        PAS 2013-10-30             71              SUBN
-## 3  88711MB                 NY        COM 2014-05-16             45               VAN
-## 4  EED6605                 NY        PAS 2014-04-01             83              SUBN
-## 5   166TPE                 NY        ORG 2014-01-30             98               SDN
-## 6   SVD10B                 NJ        PAS 2013-10-12             37              SUBN
-## 7   AK120D                 NJ        PAS 2013-10-08             19              DELV
-## 8  FWM4722                 NY        PAS 2013-10-16             20              4DSD
-## 9    3H59B                 NY        OMT 2014-03-22             46              TAXI</pre>
+## 1  ESW9728                 NY        PAS 2014-01-01             19              SUBN
+## 2  GJY8845                 NY        PAS 2013-11-26             46              SUBN
+## 3  FHZ2434                 NY        PAS 2014-01-17             38               VAN
+## 4  GJP7718                 NY        PAS 2013-12-23             21              4DSD
+## 5  26247JV                 NY        COM 2013-11-23             37               VAN
+## 6  27219ME                 NY        COM 2013-11-02             85               VAN
+## 7   ZEF74W                 NJ        PAS 2013-11-16             38              4DSD
+## 8   XN659S                 NJ        PAS 2013-12-26             14               VAN
+## 9  GEX2096                 NY        PAS 2015-04-06             71               SDN</pre>
 
 </article></slide><slide class=''><hgroup><h2>summarise()</h2></hgroup><article  id="summarise" class="smaller">
 
@@ -676,7 +676,7 @@ transmute(month = month(`Issue Date`),
 
 </article></slide><slide class=''><hgroup><h2>group_by()</h2></hgroup><article  id="group_by" class="smaller">
 
-<pre class = 'prettyprint lang-r'>group_by(park %&gt;% select(1:6), `Registration State`)</pre>
+<pre class = 'prettyprint lang-r'>park %&gt;% select(1:6) %&gt;% group_by(`Registration State`)</pre>
 
 <pre >## Source: local data frame [91,003 x 6]
 ## Groups: Registration State
