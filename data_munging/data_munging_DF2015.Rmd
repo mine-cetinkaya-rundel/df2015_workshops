@@ -146,7 +146,7 @@ f( g( h(x), z=1), y=1 )
 Piped:
 
 ```{r, eval=FALSE}
-h(x) %>% g(z=1) %>% g(y=1)
+h(x) %>% g(z=1) %>% f(y=1)
 ```
 
 ## Pipes
@@ -296,7 +296,7 @@ park %>% summarize(n(), min(`Issue Date`), max(`Issue Date`))
 ## group_by() {.smaller}
 
 ```{r}
-group_by(park %>% select(1:6), `Registration State`)
+park %>% select(1:6) %>% group_by(`Registration State`)
 ```
 
 ## summarise() & group_by() {.smaller}
