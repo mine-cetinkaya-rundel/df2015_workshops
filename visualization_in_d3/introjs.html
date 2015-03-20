@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- metadata, external resources -->
+        <title> Welcome to JS </title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            .nonUniqueClass {
+                background: red;
+            }
+        </style>
+
+        <!-- content, internal resources, external resources -->
+
+        <div>hello world</div>
+
+        <span foo="bar">foo bar</span>
+
+        <div>
+            <p class="nonUniqueClass"> Red Paragraph</p>
+            <p>Another paragraph within the same div</p>
+        </div>
+
+        <ol>
+            <li id="uniqueId">First list element</li>
+            <li>Another list element</li>
+            <li>
+                <p>Paragraph inside list element</p>
+                <p>Second paragraph</p>
+            </li>
+        </ol>
+
+        <script>
+            // basic print
+            console.log("hello world");
+
+            // data types
+            var integer = 4; // Number
+            var number = 4.0; // Number
+            var string = "text"; // String
+
+            // Object (see JSON)
+            var mallory = { firstName:"malicious",
+                                    lastName:"mallory",
+                                    hasVirus: true, // Boolean
+                                    virus: function() { console.log("delete all"); } }; // Function
+            var array = [ "alice", "bob", mallory ]; // Array
+            console.log(array[2]["firstName"]);
+            console.log(array[2].lastName);
+
+            // Functions are first class objects
+            function sq1(x) {
+                return x * x;
+            }
+            // can be rewritten as
+            var sq2 = function(x) {
+                return x * x;
+            };
+            console.log("sq1(4) =", sq1(4));
+            // and can take on properties like objects
+            sq1.foo = 8;
+            sq2.bar = 3;
+            console.log("Trippy:", sq1(sq1.foo + sq2.bar));
+            // more functional programming fun w/functors, closures, anonymous functions, etc.
+
+            // conditional statements
+            if(true) {
+                console.log("true!");
+            } else {
+                console.log("unreachable");
+            }
+
+            // looping
+            vector = new Array(10); // or [];
+            for(var i=0; i<10; i++) {
+                vector[i] = i;
+            }
+            console.log(vector);
+
+            // interaction with the DOM
+            document.getElementById('uniqueId');
+            // <li id="some-id">Unique element</li>
+
+            var numParas = document.getElementsByTagName('p').length;
+            console.log(numParas);
+            // 4
+
+            var reds = document.getElementsByClassName('nonUniqueClass');
+            // [<p class="red">Red paragraph</p>]
+            console.log(reds[0].innerText);
+            // "Red Paragraph"
+
+            var paragraphs = document.getElementsByTagName('p');
+            console.log(paragraphs);
+            // HTML collection of [p, p, ... p]
+
+        </script>
+    </body>
+</html>

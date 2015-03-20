@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- metadata, external resources -->
+        <title> Welcome to JS </title>
+        <meta charset="utf-8">
+        <script src="d3.js"></script>
+        <!-- <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+    </head>
+    <body>
+        <!-- no elements here! add them programatically via script below -->
+
+        <script>
+            var svg = d3.select("body").append("svg")
+                .attr("width", 500)
+                .attr("height", 300);
+
+            // appending multiple elements to the DOM
+
+            // first we need data; in D3, data must come in the form of an array.
+            var numberData = [0,1,2]; // or .data(d3.range(3))
+            var textData = ["a", "b", "c", "d"]; // doesn't have to be numbers!
+            // can be objects too
+            var coordinateData = [
+                    {x: 10.0, y: 9.14},
+                    {x:  8.0, y: 8.14},
+                    {x: 13.0, y: 8.74},
+                    {x:  9.0, y: 8.77},
+                    {x: 11.0, y: 9.26}
+                ];
+
+            // and we'll use data to create multiple elements (mapping)
+            // we want each element we create to correspond to data.
+            // this is called "data joining"
+
+            // computes the join, also defining "enter" and "exit" subselections.
+            // the update selection is returned.
+            var circle = svg.selectAll("circle")
+                .data(textData);
+
+            // if there were already circles, now would be the time to update them!
+            // if there were circles, and now some of them are not bound to data.. now is a good time to delete them!
+
+            // appending to the enter selection creates the missing elements
+            circle.enter().append("circle");
+
+            // update attributes and styles on "update" selection
+            // updating old and new, a special feature of append (for less repeat code)
+            circle
+                .attr("class", function(d){
+                    return d; })
+                .attr("cx", function(d, i){
+                    return (i+1)*100; })
+                .attr("cy", 150)
+                .attr("r", 30)
+                .style("stroke", "black")
+                .style("fill", "lightgrey");
+
+            // we can do this in one shot w/method chaining
+            // for static visualizations, this is THE d3 way to do things (if you are keeping things static)!
+            var circle = svg.selectAll("circle")
+                .data(textData)
+            .enter().append("circle")
+                .attr("class", function(d){
+                    return d; })
+                .attr("cx", function(d, i){
+                    return (i+1)*100; })
+                .attr("cy", 150)
+                .attr("r", 30)
+                .style("stroke", "black")
+                .style("fill", "lightgrey");
+
+        </script>
+
+    </body>
+</html>

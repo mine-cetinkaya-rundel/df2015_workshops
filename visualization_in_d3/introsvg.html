@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- metadata, external resources -->
+        <title> Welcome to SVG </title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+
+            rect {
+                fill: green;
+                background-color: teal; /* does nothing */
+            }
+            circle {
+                stroke-dashoffset: 1;
+                stroke-dasharray: 5,5;
+            }
+
+            svg {
+                border: 1px solid black;
+            }
+
+        </style>
+
+        <svg height="300" width="500">
+            <g class="gWrapper" transform="translate(30,30)">
+                <rect x="10" y="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5"/>
+                <circle cx="25" cy="75" r="20" stroke="green" fill="black" stroke-width="5"/>
+                <line x1="10" x2="50" y1="110" y2="150" stroke="orange" fill="transparent" stroke-width="5"/>
+                <path d="M10,175 Q40,165 50,200 T80,175" fill="none" stroke="blue" stroke-width="5"/>
+                <text x="10" y="250" font-family="Verdana"> hello world </text>
+            </g>
+            <g transform="translate(200, 55)">
+                <text x="0" y="-20">More Paths</text>
+                <!-- "mini-language" for paths...
+                 M: move to (jump)
+                 L: line to
+                 Q: curve to (quadratic)
+                 -->
+                <path d="M0,50 L50,0 Q100,0 100,50" fill="none" stroke-width="3" stroke="black" />
+            </g>
+          <g transform="translate(200, 105)">
+                <!--
+                 C: curve to (cubic)
+                 Z: close shape
+                 -->
+                <path d="M0,100 C0,0 25,0 125,100 Z" fill="black" />
+          </g>
+
+        </svg>
+    </body>
+</html>

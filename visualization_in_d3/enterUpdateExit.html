@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <script src="d3.js"></script>
+</head>
+
+<body>
+<div id="svg"></div>
+
+<script>
+    /*
+
+    var update_sel = svg.selectAll("circle").data(data)
+    update_sel.attr(...)  // operate on old elements only
+    update_sel.enter().append("circle").attr(...) // operate on new elements only
+    update_sel.attr(...) // operate on old and new elements
+    update_sel.exit().remove() // complete the enter-update-exit pattern
+
+    */
+
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
+    var svg = d3.select("#svg").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom);
+
+    svg.selectAll("circle")
+        .data(d3.range(5)) // [0, 1, 2, 3, 4]
+    .enter().append("circle")
+        .attr("r", 5)
+        .attr("cx", function(d, i){
+            return margin.left + 20*d;
+        })
+        .attr("cy", 20)
+        .style("stroke", "black");
+
+    // --------------------------------------------------
+    // Bind more data than there are corresponding cirlce elements
+
+    newcircs = svg.selectAll("circle")
+        .data(d3.range(10));
+
+    // operate on old elements only (i.e. first 5 circles)
+    newcircs.transition()
+        .duration(1000)
+        .attr("r", 10);
+
+    // operate on new (unbound) elements only
+    newcircs.enter().append("circle")
+        .attr("r", 5)
+        .attr("cx", function(d, i){
+            return margin.left + 20*d
+        })
+        .attr("cy", 20)
+        .style("fill", "green");
+
+    // --------------------------------------------------
+    // Bind less data than there are corresponding cirlce elements
+
+    window.setTimeout(function(){
+
+        newcircs = svg.selectAll("circle")
+            .data(d3.range(3));
+
+        // first 3 (of whatever is there)
+        newcircs.transition()
+            .duration(1000)
+            .attr("opacity", 0.5);
+
+        // operate on new elements only (none)
+        newcircs.enter().append("circle")
+            .attr("r", 5)
+            .attr("cx", function(d, i){
+                return margin.left + 20*d
+            })
+            .attr("cy", 20)
+            .style("fill", "blue");
+
+        // operate on excess elements, i.e. last 7 circles
+        newcircs.exit()
+            .attr("class", "exit")
+        .transition()
+            .duration(750)
+            .attr("y", 60)
+            .style("opacity", 1e-6)
+            .remove();
+
+    }, 4000);
+
+</script>
+</body>
+</html>

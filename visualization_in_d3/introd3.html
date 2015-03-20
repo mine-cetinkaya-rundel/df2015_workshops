@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- metadata, external resources -->
+        <title> Welcome to JS </title>
+        <meta charset="utf-8">
+        <script src="d3.js"></script>
+    </head>
+    <body>
+        <style>
+            circle {
+                stroke: black;
+                stroke-width: 5px;
+                fill: none;
+            }
+        </style>
+
+        <article>
+            <section></section>
+            <section></section>
+            <section></section>
+        </article>
+
+        <svg width="500" height="300">
+            <circle cx="100" cy="100" r="30"></circle>
+            <circle cx="200" cy="100" r="30"></circle>
+            <circle cx="300" cy="100" r="30"></circle>
+            <circle cx="400" cy="100" r="30"></circle>
+        </svg>
+
+        <script>
+            // selecting elements from the DOM
+
+            // HTML Collection of DOM elements (circles)
+            var htmlCircles = document.getElementsByTagName("circle");
+
+            var svg = d3.select("svg");
+
+             // select all <circle> elements as an array
+             var circle = d3.selectAll("circle");
+
+             // set attributes and styles for circle elements selected
+             circle.attr("r", 10);
+             circle.style("fill", "red");
+
+             // or use "method-chaining" to do it all at once (shorter, more readable code)
+             d3.selectAll("circle")
+                .attr("r", 30)
+                .style("fill", "none")
+                .style("opacity", 0.5);
+
+
+            // append elements to the DOM
+
+            // With one element selected, adds one element.
+            // select the <body> element
+            var article = d3.select("article");
+            // add an <h1> element
+            var h1 = article.append("h1");
+            h1.text("h1 title");
+
+            // With many elements selected, adds one element to each.
+            // select all <section> elements
+            var section = article.selectAll("section"); //can use article or d3
+            // add an <p> element to each
+            var p = section.append("p");
+            p.text("Hello World");
+            // use caution when chaining; append returns a new selection!
+            var h6 = d3.selectAll("section")
+                .style("background", "steelblue")
+            .append("h6")
+                .text("asdfasdfk;asdlkfj!");
+
+
+            // Adding many elements? No single operation to do this...
+
+        </script>
+
+    </body>
+</html>

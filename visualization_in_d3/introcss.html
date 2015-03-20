@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- metadata, external resources -->
+        <title> Welcome to CSS </title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <!-- content, internal resources, external resources -->
+        <style>
+
+            /* applied to any <p> tags */
+            p {
+                color: blue;
+            }
+
+            /* applied to any tag with the id "uniqueId" (should only be 0 or 1) */
+            #uniqueId {
+                font-style: italic;
+            }
+
+            /* applied to any tag with the class "red-bg" */
+            .nonUniqueClass {
+                background: red;
+            }
+
+            /* applied only to any <p> tags that are inside any <li> tags */
+            li p {
+                color: pink;
+            }
+
+            /* applied to any tag where attribute "foo" equals "bar" */
+            [foo=bar] {
+                font-size: 30px;
+            }
+
+            /* compound selectors to identify elements by two or more facets */
+            p.otherClass {
+                background: yellow;
+            }
+            li#otherId {
+                font-weight: bold;
+            }
+
+        </style>
+
+        <div>hello world</div>
+
+        <span foo="bar">foo bar</span>
+
+        <div>
+            <p class="nonUniqueClass">Paragraph</p>
+            <p class="otherClass">Another paragraph within the same div</p>
+        </div>
+
+        <ol>
+            <li id="uniqueId">First list element</li>
+            <li id="otherId">Another list element</li>
+            <li>
+                <p class="nonUniqueClass">Paragraph inside list element</p>
+                <p>Second paragraph</p>
+            </li>
+        </ol>
+
+    </body>
+</html>
